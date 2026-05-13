@@ -179,10 +179,12 @@ const SocioList = () => {
       )}
 
       {activeTab === 'cartas' && <ConfiguracionCartas />}
+      {activeTab === 'constancias' && <ConstanciasTab />}
     </div>
   );
 };
-const ConstanciasTab = ({ socios }) => {
+
+const ConstanciasTab = () => {
   const [data, setData] = React.useState<any>({});
   const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
