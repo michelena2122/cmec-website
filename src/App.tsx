@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { Navbar } from './components/shared/Navbar';
 import { Footer } from './components/shared/Footer';
 import Home from './pages/public/Home';
@@ -29,7 +29,7 @@ import { CMEC_THEME } from './constants';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/">
       <div className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900">
         <Routes>
           <Route path="/admin" element={<AdminLayout />}>
