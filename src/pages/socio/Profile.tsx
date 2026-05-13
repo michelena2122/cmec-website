@@ -145,7 +145,35 @@ const SocioProfile = () => {
                 </div>
               </div>
             </div>
-
+              <div className="space-y-3 border-t border-slate-100 pt-4 mt-4">
+  <h3 className="font-bold text-slate-700 text-sm">Constancias de Sesiones y Congreso</h3>
+  
+  <button onClick={() => {
+    const mesActual = new Date().getMonth();
+    const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
+    const link = constancias.sesiones?.[mesActual];
+    if (link) window.open(link, '_blank');
+    else alert('Constancia de sesión no disponible');
+  }} className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-bold text-sm hover:bg-slate-200 transition-all">
+    📥 Descargar Constancia Sesión
+  </button>
+  
+  <button onClick={() => {
+    const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
+    const links = [
+      { label: 'Congreso', url: constancias.congreso },
+      { label: 'Precongreso', url: constancias.precongreso },
+      { label: 'Transcongreso', url: constancias.transcongreso }
+    ];
+    const disponibles = links.filter(l => l.url);
+    if (disponibles.length === 0) { alert('No hay constancias disponibles'); return; }
+    if (disponibles.length === 1) { window.open(disponibles[0].url, '_blank'); return; }
+    const selected = prompt(`Elige constancia:\n${disponibles.map((l,i) => `${i+1}. ${l.label}`).join('\n')}`);
+    if (selected) window.open(disponibles[parseInt(selected)-1]?.url, '_blank');
+  }} className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-bold text-sm hover:bg-slate-200 transition-all">
+    📥 Descargar Constancia Congreso
+  </button>
+</div>
             <div className="bg-white rounded-3xl border border-slate-200 p-8">
               <h2 className="font-bold text-slate-900 text-xl mb-4">Mis Datos</h2>
               {!editando ? (

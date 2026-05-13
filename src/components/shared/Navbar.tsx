@@ -6,6 +6,7 @@ import { CMEC_THEME } from '../../constants';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const headerData = JSON.parse(localStorage.getItem('cmec_header') || '{}');
 
   const navLinks = [
     { name: 'Nosotros', path: CMEC_THEME.routes.NOSOTROS },
@@ -18,18 +19,17 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white border-b border-slate-200 py-6"> {/* cambiar py-4 a py-6 */}
+    <nav className="bg-white border-b border-slate-200 py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-3">
-              const headerData = JSON.parse(localStorage.getItem('cmec_header') || '{}');
-<img src={headerData.logo1 || '/images/logo_sin_fondo.png'}
-<div className="hidden md:block">
-  <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>COLEGIO MEXICANO</p>
-  <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>DE ESPECIALISTAS</p>
-  <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>EN COLOPROCTOLOGÍA, A.C.</p>
-</div>
+              <img src={headerData.logo1 || '/images/logo_sin_fondo.png'} alt="CMEC" className="h-16 object-contain" />
+              <div className="hidden md:block">
+                <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>COLEGIO MEXICANO</p>
+                <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>DE ESPECIALISTAS</p>
+                <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>EN COLOPROCTOLOGÍA, A.C.</p>
+              </div>
             </Link>
           </div>
 

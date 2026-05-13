@@ -74,7 +74,7 @@ const TextoTab = ({ data, guardar }) => {
       />
       <div className="flex justify-between items-center mt-2">
         <p className="text-xs text-slate-400">{texto.length}/500</p>
-        <button onClick={() => guardar({ texto })} className="flex items-center gap-2 bg-sky-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm">
+        <button onClick={() => guardar({ texto: texto })} className="flex items-center gap-2 bg-sky-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm">
           <Save size={16}/> Guardar
         </button>
       </div>
