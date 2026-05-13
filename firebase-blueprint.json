@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Base user profile for all roles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "socio", "visitante"] },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Socio": {
+      "title": "Socio Data",
+      "description": "Extended data for specialists",
+      "type": "object",
+      "properties": {
+        "numeroSocio": { "type": "string" },
+        "prefijo": { "type": "string" },
+        "apellidos": { "type": "string" },
+        "puesto": { "type": "string" },
+        "telefono": { "type": "string" },
+        "statusSocio": { "type": "string", "enum": ["activo", "inactivo", "pendiente"] },
+        "cuotas": { "type": "object" }
+      }
+    },
+    "Noticia": {
+      "title": "News Item",
+      "description": "Institutional news",
+      "type": "object",
+      "properties": {
+        "titulo": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "imagen": { "type": "string" },
+        "fecha": { "type": "string" }
+      }
+    },
+    "Sesion": {
+      "title": "Academic Session",
+      "description": "Monthly sessions",
+      "type": "object",
+      "properties": {
+        "tema": { "type": "string" },
+        "ponentes": { "type": "array" },
+        "link": { "type": "string" },
+        "tipo": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/socios/{userId}": {
+      "schema": "Socio",
+      "description": "Partner specific data linked by UID"
+    },
+    "/noticias/{noticiaId}": {
+      "schema": "Noticia",
+      "description": "Public news"
+    },
+    "/sesiones/{sesionId}": {
+      "schema": "Sesion",
+      "description": "Academic sessions"
+    }
+  }
+}
