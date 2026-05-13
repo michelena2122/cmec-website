@@ -23,7 +23,8 @@ export const Navbar = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-3">
-              <img src="/images/logo_sin_fondo.png" alt="CMEC" className="h-16 object-contain" />
+              const headerData = JSON.parse(localStorage.getItem('cmec_header') || '{}');
+<img src={headerData.logo1 || '/images/logo_sin_fondo.png'}
 <div className="hidden md:block">
   <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>COLEGIO MEXICANO</p>
   <p className="font-bold text-sky-900 leading-tight" style={{fontSize:'8px'}}>DE ESPECIALISTAS</p>
