@@ -308,5 +308,61 @@ const ConfiguracionCartas = () => {
     </div>
   );
 };
+const ConstanciasTab = () => {
+  const [data, setData] = React.useState({ sesiones: {}, congreso: '', precongreso: '', transcongreso: '' });
+  const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
+  React.useEffect(() => {
+    const stored = localStorage.getItem('cmec_socios_constancias');
+    if (stored) setData(JSON.parse(stored));
+  }, []);
+
+  const guardar = (updates) => {
+    const updated = { ...data, ...updates };
+    setData(updated);
+    localStorage.setItem('cmec_socios_constancias', JSON.stringify(updated));
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="bg-white rounded-3xl border border-slate-200 p-8">
+        <h3 className="font-bold text-slate-900 mb-6">Constancias de Sesiones (Mensuales)</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {meses.map((mes, idx) => (
+            <div key={mes}>
+              <label className="block text-xs font-bold text-slate-400 mb-2">{mes}</label>
+              <input type="text" placeholder="Link Google Drive" value={data.sesiones?.[idx] || ''} 
+                onChange={e => guardar({ sesiones: { ...data.sesiones, [idx]: e.target.value } })}
+                className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm"/>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-3xl border border-slate-200 p-8">
+        <h3 className="font-bold text-slate-900 mb-4">Constancias Congreso 2026</h3>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold text-slate-400 mb-2">Constancia Congreso</label>
+            <input type="text" placeholder="Link Google Drive" value={data.congreso || ''} 
+              onChange={e => guardar({ congreso: e.target.value })}
+              className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm"/>
+          </div>
+          <div>
+            <label className="block text-xs font-bold text-slate-400 mb-2">Constancia Precongreso</label>
+            <input type="text" placeholder="Link Google Drive" value={data.precongreso || ''} 
+              onChange={e => guardar({ precongreso: e.target.value })}
+              className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm"/>
+          </div>
+          <div>
+            <label className="block text-xs font-bold text-slate-400 mb-2">Constancia Transcongreso</label>
+            <input type="text" placeholder="Link Google Drive" value={data.transcongreso || ''} 
+              onChange={e => guardar({ transcongreso: e.target.value })}
+              className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default SocioList;

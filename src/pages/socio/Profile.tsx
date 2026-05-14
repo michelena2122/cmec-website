@@ -144,7 +144,7 @@ const SocioProfile = () => {
                   <button onClick={() => generarInvitacion(true)} className="flex-1 py-3 bg-sky-900 text-white rounded-xl font-bold text-sm hover:bg-sky-800 transition-all">Imprimir</button>
                 </div>
                 <div className="space-y-3 border-t border-slate-100 pt-4 mt-4">
-                  <h3 className="font-bold text-slate-700 text-sm">Constancias de Sesiones y Congreso</h3>
+                  <h3 className="font-bold text-slate-700 text-sm">constancias de Sesiones y Congreso</h3>
                   <button onClick={() => {
                     const mesActual = new Date().getMonth();
                     const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
@@ -152,12 +152,12 @@ const SocioProfile = () => {
                     if (link) window.open(link, '_blank');
                     else alert('Constancia de sesión no disponible');
                   }} className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-bold text-sm hover:bg-slate-200 transition-all">
-                    📥 Descargar Constancia Sesión
+                    📥 Descargar constancia Sesión
                   </button>
                   <button onClick={() => {
                     const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
                     const links = [
-                      { label: 'Congreso', url: constancias.congreso },
+                      { label: 'congreso', url: constancias.congreso },
                       { label: 'Precongreso', url: constancias.precongreso },
                       { label: 'Transcongreso', url: constancias.transcongreso }
                     ];
