@@ -87,7 +87,7 @@ const SocioList = () => {
       {guardado && <div className="fixed bottom-8 right-8 bg-emerald-600 text-white px-6 py-3 rounded-2xl font-bold text-sm z-50">Guardado — {socios.length} socios</div>}
 
       <div className="flex bg-white rounded-2xl p-1 border border-slate-200">
-       {[{id:'socios',label:'Socios'},{id:'cuota',label:'Cuota'},{id:'cartas',label:'Configuración de Cartas'},{id:'constancias',label:'Constancias'}]
+       {[{id:'socios',label:'Socios'},{id:'cuota',label:'Cuota'},{id:'cartas',label:'Configuración de Cartas'},{id:'constancias',label:'Constancias'}].map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)}
             className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all ${activeTab === tab.id ? 'bg-sky-900 text-white' : 'text-slate-500 hover:bg-slate-50'}`}>
             {tab.label}
