@@ -144,7 +144,7 @@ const SocioProfile = () => {
                   <button onClick={() => generarInvitacion(true)} className="flex-1 py-3 bg-sky-900 text-white rounded-xl font-bold text-sm hover:bg-sky-800 transition-all">Imprimir</button>
                 </div>
                 <div className="space-y-3 border-t border-slate-100 pt-4 mt-4">
-                  <h3 className="font-bold text-red-700 text-sm">🔥 CONSTANCIAS ACTIVAS 🔥</h3>
+                  <h3 className="font-bold text-slate-900 text-sm text-center">Constancias Activas</h3>
                   <button onClick={() => {
                     const mesActual = new Date().getMonth();
                     const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
