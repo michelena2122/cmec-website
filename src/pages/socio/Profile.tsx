@@ -157,7 +157,7 @@ const SocioProfile = () => {
                   <button onClick={() => {
                     const constancias = JSON.parse(localStorage.getItem('cmec_socios_constancias') || '{}');
                     const links = [
-                      { label: 'congreso', url: constancias.congreso },
+                      { label: 'Congreso', url: constancias.congreso },
                       { label: 'Precongreso', url: constancias.precongreso },
                       { label: 'Transcongreso', url: constancias.transcongreso }
                     ];

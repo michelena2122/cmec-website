@@ -87,7 +87,7 @@ const SocioList = () => {
       {guardado && <div className="fixed bottom-8 right-8 bg-emerald-600 text-white px-6 py-3 rounded-2xl font-bold text-sm z-50">Guardado — {socios.length} socios</div>}
 
       <div className="flex bg-white rounded-2xl p-1 border border-slate-200">
-       {[{id:'socios',label:'Socios'},{id:'cuota',label:'Cuota'},{id:'cartas',label:'Configuración de Cartas'},{id:'constancias',label:'constancias'}].map(tab => (
+       {[{id:'socios',label:'Socios'},{id:'cuota',label:'Cuota'},{id:'cartas',label:'Configuración de Cartas'},{id:'constancias',label:'Constancias'}].map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)}
             className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all ${activeTab === tab.id ? 'bg-sky-900 text-white' : 'text-slate-500 hover:bg-slate-50'}`}>
             {tab.label}
@@ -183,38 +183,6 @@ const SocioList = () => {
     </div>
   );
 };
-
-const constanciasTab = () => {
-  const [data, setData] = React.useState<any>({});
-  const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-
-  React.useEffect(() => {
-    const stored = localStorage.getItem('cmec_socios_constancias');
-    if (stored) { try { setData(JSON.parse(stored)); } catch {} }
-  }, []);
-
-  const guardar = (newData: any) => {
-    const updated = { ...data, ...newData };
-    setData(updated);
-    localStorage.setItem('cmec_socios_constancias', JSON.stringify(updated));
-  };
-
-  return (
-    <div className="space-y-6">
-      <div className="bg-white rounded-3xl border border-slate-200 p-8">
-        <h3 className="font-bold text-slate-900 mb-6">constancias de Sesiones (Mensuales)</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {meses.map((mes, idx) => (
-            <div key={mes}>
-              <label className="block text-xs font-bold text-slate-400 mb-2">{mes}</label>
-              <input type="text" placeholder="Link Google Drive" value={data.sesiones?.[idx] || ''} 
-                onChange={e => guardar({ sesiones: { ...data.sesiones, [idx]: e.target.value } })}
-                className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm"/>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="bg-white rounded-3xl border border-slate-200 p-8">
         <h3 className="font-bold text-slate-900 mb-4">constancias Congreso 2026</h3>
         <div className="space-y-4">
