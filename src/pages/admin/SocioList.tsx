@@ -179,7 +179,7 @@ const SocioList = () => {
       )}
 
       {activeTab === 'cartas' && <ConfiguracionCartas />}
-      {activeTab === 'constancias' && <constanciasTab />}
+      {activeTab === 'constancias' && <ConstanciasTab />}
     </div>
   );
 };
